@@ -13,5 +13,5 @@ int main(void)
 		putchar(l_letter);
 		putchar('\n');
 		return (0);
+
 	}
-}
