@@ -15,5 +15,5 @@ for (i = 0; < 8; i++)
 	_putchar(i);
 }
 return (0);
-_putchar('\n')
+_putchar('\n');
 }
