@@ -1,19 +1,21 @@
 #include "main.h"
 
 /**
- * main - print _putchar
- * Done by mt
+ * _putchar - print _putchar
+ * @c: Done by mt
  * Return: 0
  */
 
-int main(void)
+int _putchar(char c)
 {
-	int str[] = {95, 113, 117, 116, 99, 104, 97, 114,};
-int i;
-for (i = 0; i < 8; i++)
-{
-	_putchar(i);
-}
-return (0);
-_putchar('\n');
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
+	return (0);
 }
