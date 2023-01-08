@@ -12,9 +12,8 @@ int c;
 if (*s == '\0')
 {
 return (0);
-{
+}
 else
-{
 c = _strlen_recursion(s + 1);
 return (c + 1);
 }
