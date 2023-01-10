@@ -1,7 +1,5 @@
- #include "main.h"
-
+#include "main.h"
 #include <stdio.h>
-
 #include <stdlib.h>
 
 
@@ -34,9 +32,6 @@ i++;
 }
 printf("\n");
 }
-
-
-
 /**
  * main - check the code for ALX School students.
  * Return: Always 0.
@@ -44,12 +39,8 @@ printf("\n");
  **/
 
 int main(void)
-
 {
 char *buffer;
-
-
-
 buffer = create_array(98, 'H');
 if  (buffer == NULL)
 {
