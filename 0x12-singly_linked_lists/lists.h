@@ -31,7 +31,8 @@ unsigned int len;
 
 struct list_s *next;
 
-} list_t;
+} 
+list_t;
 
 int _putchar(char c);
 
