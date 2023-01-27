@@ -4,7 +4,7 @@
  * *add_node_end - adds a new node at the end of a list_t list
  * @head: double pointer to list_t
  * @str: pointer to the first node in list_t
- * return: a poitner to the new node or NULL if it failed
+ * return value: a poitner to the new node or NULL if it failed
  *
  **/
 
