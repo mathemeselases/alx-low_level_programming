@@ -1,4 +1,5 @@
 #include "lists.h"
+<<<<<<< HEAD
 /**
  * add_node_end - Adds a new node at the end of a list_t list.
  * @head: A pointer the head of the list_t list.
@@ -7,39 +8,53 @@
  * Otherwise - the address of the new element
  **/
 
+=======
+#include <string.h>
+
+/**
+ * add_node_end - Adds a new node at the end
+ *                of a list_t list.
+ * @head: A pointer the head of the list_t list.
+ * @str: The string to be added to the list_t list.
+ *
+ * Return: If the function fails - NULL.
+ *         Otherwise - the address of the new element.
+ */
+>>>>>>> 701e4e8733efd1911edf16669ce48642e85ba874
 list_t *add_node_end(list_t **head, const char *str)
 {
-int runner;
-list_t *new_end_node;
-list_t *firstnode;
-new_end_node = malloc(sizeof(list_t));
-runner = 0;
-if (new_end_node)
-{
-new_end_node->str = strdup(str);
-if (!new_end_node->str || !str)
-{
-free(new_end_node);
-return (NULL);
-/* go through str to know the lenght */
-/* and assign this to the len variable */
-/* and de-reference to new_end_node */
-}
-while (new_end_node->str[runner])
-runner++;
-/* new_end_node will go fordward till is equal to NULL */
-new_end_node->next = NULL;
-new_end_node->len = runner;
-if (!*head)
-*head = new_end_node;
-return (new_end_node);
-/* first node will be equal to the pointer to the */
-/* first element of the linked list */
-firstnode = *head;
-while (firstnode->next)
-firstnode = firstnode->next;
-firstnode->next = new_end_node;
-return (new_end_node);
-}
-return (NULL);
+	char *dup;
+	int len;
+	list_t *new, *last;
+
+	new = malloc(sizeof(list_t));
+	if (new == NULL)
+		return (NULL);
+
+	dup = strdup(str);
+	if (str == NULL)
+	{
+		free(new);
+		return (NULL);
+	}
+
+	for (len = 0; str[len];)
+		len++;
+
+	new->str = dup;
+	new->len = len;
+	new->next = NULL;
+
+	if (*head == NULL)
+		*head = new;
+
+	else
+	{
+		last = *head;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new;
+	}
+
+	return (*head);
 }
