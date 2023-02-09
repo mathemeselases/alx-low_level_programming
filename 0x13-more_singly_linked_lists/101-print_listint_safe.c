@@ -1,58 +1,68 @@
 #include "lists.h"
 
 /**
-* print_listint_safe - prints a list but safely
-* @head: the head node. pointer
-*
-* Description: dont wanna print a infinite loop
-*	either match addresses or free the head so cant loop back
-* Return: the count number
-*
-*/
+ * free_listp - frees a linked list
+ * @head: head of a list.
+ *
+ * Return: no return.
+ */
+void free_listp(listp_t **head)
+{
+	listp_t *temp;
+	listp_t *curr;
 
+	if (head != NULL)
+	{
+		curr = *head;
+		while ((temp = curr) != NULL)
+		{
+			curr = curr->next;
+			free(temp);
+		}
+		*head = NULL;
+	}
+}
+
+/**
+ * print_listint_safe - prints a linked list.
+ * @head: head of a list.
+ * Return: number of nodes in the list.
+ */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t count = 0;
-	size_t index = 0;
-	listint_t const **array;/* A */
+	size_t nnodes = 0;
+	listp_t *hptr, *new, *add;
 
-	array = malloc(sizeof(listint_t *) * 1024);
-	if (!array)
-		exit(98);
-	unsigned int i = 0;
-	unsigned int flag = 0;
-
-	while (head != NULL)/* B */
+	hptr = NULL;
+	while (head != NULL)
 	{
-		for (i = 0; i < count; i++)/* C*/
+		new = malloc(sizeof(listp_t));
+
+		if (new == NULL)
+			exit(98);
+
+		new->p = (void *)head;
+		new->next = hptr;
+		hptr = new;
+
+		add = hptr;
+
+		while (add->next != NULL)
 		{
-			if (head == array[i])/* D */
+			add = add->next;
+			if (head == add->p)
 			{
-				flag = 1;
-				index = i;
-				break;
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free_listp(&hptr);
+				return (nnodes);
 			}
-			else
-				flag = 0;
 		}
 
-		if (flag == 1)/* E */
-			break;
-		array[count] = head;
+		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
-		count++;
+		nnodes++;
 	}
 
-	i = 0;
-	while (i < count)/* F */
-	{
-		printf("[%p] %d\n", (void *)array[i], array[i]->n);
-		i++;
-	}
-	if (flag == 1)/* G */
-	{
-		printf("-> [%p] %d\n", (void *)array[index], array[index]->n);
-	}
-	free(array);
-	return (count);
+	free_listp(&hptr);
+	return (nnodes);
 }
