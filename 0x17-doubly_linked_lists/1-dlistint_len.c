@@ -1,8 +1,8 @@
 #include "lists.h"
 /**
- * dlistint_len - show us the number of elements 
- * @h: a pointer to the head 
- * Return: the number of elements 
+ * dlistint_len - show us the number of elements
+ * @h: a pointer to the head
+ * Return: the number of elements
  */
 size_t dlistint_len(const dlistint_t *h)
 {
